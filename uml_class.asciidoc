@@ -1,0 +1,91 @@
+@startuml Computer
+
+class Person{
+- String Name
++ String Password
+}
+
+class Laptop{
+- String SerialNo
++ String Brand
++ double Price
++ getBrand()
+}
+
+class UltraBook{
++ double Weight
++ getWeight()
++ getBrand()
+}
+
+class HomeBook{
++ String Brand
++ getBrand()
+}
+
+class GamingBook{
++ String ScreenSize
++ getScreenSize()
++ getBrand()
+}
+
+class Mouse{
+- int Id
++ String Brand
++ getType()
+}
+
+class Battery{
++ String Power
++ getBatteryPower()
+}
+
+class Ram{
+- String Id
++ String tag
++ getMemorySize()
+}
+
+abstract class Processor{
++ String Speed
++ String Cache
++ getSpeed()
+- getCache()
+}
+
+class HardDisk{
+- String Id
++ String tag
++ getCapacity()
+}
+
+class Accessory{
++ String Type
++ String Name
++ getName()
+}
+
+class DockStation{
++ String Name
++ getName()
+}
+
+enum MouseType {
+  Wireless
+  Bluetooth
+  Wired
+}
+
+Laptop ..> Battery: <<bind>>
+Laptop"1" *-- "*"Ram
+Laptop"1" *-- "*"HardDisk
+Mouse - MouseType
+Laptop *-- "1"Processor
+Laptop <|-- UltraBook
+Laptop <|-- GamingBook
+Laptop <|-- HomeBook
+Accessory o-- Laptop
+Accessory - Mouse
+Accessory - DockStation
+Person ..> Laptop: <<use>>
+@enduml
