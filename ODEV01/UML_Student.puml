@@ -1,0 +1,84 @@
+@startuml Computer
+
+abstract class Person{
+#Id: string
+#name: string
+#age: int
+}
+class Student{
++ Grade: int
++ GradeLetter: Char
++ GraduationYear: int
+{static} int StudentCount
+{static} void CountStudentList()
++ AddSemester()
++ AddCourse()
++ {virtual} void DisplayList()
+}
+
+class Semester{
+- Name: string 
++ startDate: date
++ endDate: date 
+~ displayList()
+}
+
+class Course{
+- Title: string
+- Grade: double 
++ DisplayList: void <<override>>
+}
+
+class Assigment{
++ AssigtmentName: string
++ DueDate: datetime 
++ Grade: double 
++ weight: int 
++ group: string
++ displayListOfCompletedAssigment()
+}
+
+class Holiday{
+- Name: string 
++ startDate: date 
++ endDate: date 
++ shiftSchedule: bool 
+~ displayList()
++ shiftSchedule()
+}
+
+class Exam{
++ startTime: date 
++ endTime: date 
++ location: string 
++ weight: int 
+~ displayList()
+}
+
+class FinalExam{
++ startTime: date 
++ endTime: date 
++ location: string 
+~ displayList()
++ setExamTime()
++ setAllSubjectContainsExam()
+}
+
+class QuizExam{
++ startTime: date 
++ endTime: date 
++ location: string 
+~ displayList()
++ setExamTime()
++ setShortExam()
+}
+
+Person <|-- Student
+Student *-- "0..1"Semester
+Semester *-- Course
+Course *-- Exam
+Course"1.." *-- "0"Assigment
+Student o-- Holiday
+Exam o-- QuizExam
+Exam o-- FinalExam
+@enduml

@@ -1,0 +1,378 @@
+= Tasarım Örüntüleri Dersi
+== Asciidoc ve PlantUML Ödevi
+
+https://github.com/kadireker/TasarimOruntuleri/tree/main/ODEV01
+
+1.uninitialized and initialized variables
+[source, c#]
+----
+/* C# derleme anında hata verir */
+
+string s;
+if (condition) s = "test";
+// compiler error here: use of unassigned local variable 's'
+if (s == null) Console.WriteLine("uninitialized");
+
+/*initlialized */
+int x=1;
+x++;
+Console.WriteLine("Sayi arttir : " + x);
+----
+image::images/1.png[]
+
+2.range-based for loop
+
+* Student sınıfı içerisinde tüm öğrencileri dönen metottur
+
+[source, c#]
+----
+public void DisplayAllStudentList(List<Student> stList)
+{
+    foreach (var item in stList)
+    {
+        Console.WriteLine("ID:" + item.Id + "\n"+"Adı:" 
+            + item.Name + "\n" + item.Age+
+            "\n"+"Notu: "+ item.Grade+"\n"+"NotHarf: "+item.GradeLetter);
+    }
+}
+----
+
+3.arrays that can shrink at run time (vector, ArrayList vb.) 
+
+* Student sınıfı birden fazla olacak şekilde List<Student> şeklinde tanımlandı
+
+[source, c#]
+----
+List<Student> st = new List<Student>();
+Person pp = new Student();
+pp.Id = "123";
+pp.Name = "Kadir EKER";
+pp.Age = 32;
+st.Add(new Student(pp, 85, 'B', 2022));
+Person pp2 = new Student();
+pp2.Id = "124";
+pp2.Name = "Melike EKER";
+pp2.Age = 20;
+st.Add(new Student(pp2,80,'A',2020));
+----
+
+4.function parameters (arguments) pass-by-reference or pass-by-values (sayfa 96,97)
+
+[source, c#]
+----
+class Program
+{
+    static int intData = 0;
+    static string stringData = string.Empty;
+
+    public static void CallByValueForValueType(int data)
+    {
+        data = data + 5;
+    }
+
+    public static void CallByValueForRefrenceType(string data)
+    {
+        data = data + "Changes";
+    }
+
+
+    public static void CallByRefrenceForValueType(ref int data)
+    {
+        data = data + 5;
+    }
+
+
+    public static void CallByRefrenceForRefrenceType(ref string data)
+    {
+        data = data  +"Changes";
+    }
+
+
+    static void Main(string[] args)
+    {
+        intData = 0;
+        CallByValueForValueType(intData);
+        Console.WriteLine($"CallByValueForValueType : {intData}");
+
+        stringData = string.Empty;
+        CallByValueForRefrenceType(stringData);
+        Console.WriteLine($"CallByValueForRefrenceType : {stringData}");
+
+        intData = 0;
+        CallByRefrenceForValueType(ref intData);
+        Console.WriteLine($"CallByRefrenceForValueType : {intData}");
+
+        stringData = string.Empty;
+        CallByRefrenceForRefrenceType(ref stringData);
+        Console.WriteLine($"CallByRefrenceForRefrenceType : {stringData}");
+
+        Console.ReadLine();
+    }
+}
+----
+
+5.instance of a class 
+
+[source, c#]
+----
+Person p = new Student(pp, 85, 'B', 2022)
+----
+
+6.const functions (C#)
+
+* C# ta const tam karşılanmadığı için readonly bir örnek verdim
+
+[source, c#]
+----
+public readonly double Distance => Math.Sqrt(X * X + Y * Y);
+----
+
+7.use a "Compiler-generated default constructor"
+
+* Grade default olarak 0 GradeLetter ise F olarak tanımlanmıştır
+
+[source, c#]
+----
+public int? Grade = 0;
+public char? GradeLetter = 'F';
+----
+
+8.use a "Copy constructor" 
+
+[source, c#]
+----
+Person pp2 = new Student();
+pp2.Id = "124";
+pp2.Name = "Melike EKER";
+pp2.Age = 20;
+st.Add(new Student(pp2,80,'A',2020));
+
+Person pp3 = pp2;// Copy Constructor
+pp3.Name = "Ayşe Gül EKER";
+----
+
+9.default parameters - (Sayfa 76 ) - (Java'da kullanılamaz)
+
+[source, c#]
+----
+ public class Student : Person
+    {
+        public int? Grade = 0; // default paramters
+        public char? GradeLetter = 'F'; // default paramters
+----
+
+10.this for disambiguation (Sayfa 77)
+
+[source, c#]
+----
+public Student(Person pp,int Grade,char GradeLetter,int GraduationYear)
+{
+Name = pp.Name;
+Id = pp.Id;
+Age = pp.Age;
+this.pp = pp;
+this.Grade = Grade;
+this.GradeLetter = GradeLetter;
+this.GraduationYear = GraduationYear;
+}
+----
+
+11.static member variables (field, attributes) and Static functions and invocations (sayfda 89-90)
+
+[source, c#]
+----
+public static int StudentCount = 0;//static variable
+public static void CountStudentList(List<Student> stList)//static fucntion
+{
+StudentCount = stList.Count;
+Console.WriteLine("Öğrenci Sayısı : " + StudentCount);
+}
+
+
+----
+
+12.default access specifier for Class (Sayfa 92-93)
+
+[source, c#]
+----
+  internal double Grade;
+----
+
+13.method overriding (sayfa 162)
+
+* DisplayList Student sınıfnda virtual tanımlandığı için Course sınıfında kursları göstermesi için ovveride edildi.
+
+[source, c#]
+----
+/*Student CLASS */
+public virtual void DisplayList(List<Student> stList)
+{
+    foreach (var item in stList)
+    {
+        Console.WriteLine("ID:" + item.Id + "\n" + "Adı:"
+        + item.Name + "\n" + item.Age +
+        "\n" + "Notu: " + item.Grade + "\n" + "NotHarf: " + item.GradeLetter);
+    }
+
+}
+
+/*Course CLASS */
+public override void DisplayList(List<Student> stList)
+{
+    Console.WriteLine();
+    Console.WriteLine("Alınan Dersler");
+    foreach (var item in stList)
+    {           
+        Console.WriteLine(item.Name);
+        Console.WriteLine( "Kurs Adı:"+ item.cc.Title + "\n" +"Kurs Geçme Notu: " + item.cc.grade+ "\n");
+        Console.WriteLine();
+    }
+}
+----
+
+14.virtual functions (sayfa 170) bir nesnenin sanal fonksiyonu çağırması ile sanal olmayan fonksiyonu çağırması arasındaki farkı gösterecek bir durumu gösteriniz. 
+
+* ?? sanal fonksiyonu ovveride edip çağrıyoruz.
+
+15.abstract class tanımlayın. 
+
+* Person sınıfını bir soyut sınıf olarak tanımladım. Bu sınıfa Student bağlarsak Student is a Person olur. Id,Name,Age gibi bilgiler bu sınıftan türetilir. İleride başkta tipte bir Personel eklenirse onlarında Id,Name,Age olması gerekir.
+
+[source, c#]
+----
+public abstract class Person
+{
+    public string Id;
+    public string Name;
+    public int Age;
+}
+----
+
+
+16.pure virtual function (C++) ile bir fonksiyonun türetilme yapıldığında kesinlikle override edilmesini zorlayın. 
+
+* C# ta anlayamadım durumu. C++ örneklerinden anladım. Bu şekilde örnek veriyorum
+* pure virtual funcition değer atandığında o classı extend alan fonksiyonda ovveride edilip kullanılması gerekir. Aksi taktirde compiler esnasında hata verir.
+
+[source, c++]
+----
+#include<iostream>
+using namespace std;
+  
+class Base
+{
+public:
+    virtual void show() = 0; //pure virtual function
+};
+  
+class Derived: public Base
+{
+public:
+    void show() { cout << "In Derived \n"; }
+};
+  
+int main(void)
+{
+    Base *bp = new Derived();
+    bp->show();
+    return 0;
+}
+----
+
+17.bir sınıfın veya methodun override edilmesine izin vermeyin. bunun yapılamadığını kod üzerinden gösterin.
+
+* Bir sınıfı içindeki methodları override edilmesini istenilmiyorsa sealed anahtar sözcüğü kullanılır
+
+[source, c++]
+----
+public class Base 
+{ 
+	public virtual void Foo()	{ //do stuff	} 
+} 
+ 
+public class A : Base 
+{ 
+	//overrides Foo from Base.  People are free to inherit from A 
+	//but cannot override Foo 
+	public sealed override void Foo() {// do other stuff} 
+} 
+ 
+public class B : A 
+{ 
+    //ERROR .. cannot override Foo 
+    public override void Foo() {//do still other stuff} 
+} 
+
+----
+
+18.composition ve agregation için iki veya daha fazla sınıf için örnek durumu kod üzerinden gösterin (Sayfa 192-197). (plantuml ile hem composition ve agregation gösterilmelidir.)
+
+* Semester ile Student arasında composition vardır Student silindiğinde semester tek başına yaşayamaz.
+
+* Student ile Holiday arasında agregation vardır. Student silindiğinde Holiday başka bir sınıfın(Personelden türetilmiş) olarak yaşayabilir.
+
+image::images/2.png[]
+
+19.template veya generic Sınıf tanımlaması yapın. (Sayfa 211) 
+
+20.template veya generic function gösterin
+
+* Generic sınıf tanımlasına bir örnek gösterdim. Burada Compare methodunu Generic olarak tanımlarsak tek bir fonksiyon T sınıfında tanımlayıp istersek string istersek int karşılaştırması yapabiliriz.
+
+[source, c++]
+----
+
+class CompareClass {  
+    public bool Compare(string x, string y) {  
+        if (x.Equals(y)) return true;  
+        else return false;  
+    }  
+    public bool Compare(int x, int y) {  
+        if (x.Equals(y)) return true;  
+        else return false;  
+    }  
+}  
+
+class CompareGenericClass < T > {  
+    public bool Compare(T x, T y) {  
+        if (x.Equals(y)) return true;  
+        else return false;  
+    }  
+}  
+class Program {  
+    static void Main(string[] args) {  
+        CompareClass obj = new CompareClass();  
+        bool intresult = obj.Compare(3, 8);  
+        Console.WriteLine("int comapre result:" + intresult);  
+        bool stringresult = obj.Compare("EKER", "EKER");  
+        Console.WriteLine("string comapre result:" + stringresult);  
+        CompareGenericClass < string > Ocompare = new CompareGenericClass < string > ();  
+        bool stringResult = Ocompare.Compare("EKER", "EKER");  
+        Console.WriteLine("Generic string comapre result:" + stringResult);  
+        CompareGenericClass < int > oIntcompare = new CompareGenericClass < int > ();  
+        bool integerresult = oIntcompare.Compare(3, 8);  
+        Console.WriteLine("Generic int comapre result:" + integerresult);  
+    }  
+}  
+----
+
+21.Sayfa 233 de gösterildiği gibi kullandığınız dilin sunduğu hazır containerlardan 3-4 farklı çeşit değişkeni tanımladığınız sınıflarınızın içinde kullanın. 
+
+* List<> içerisinden .OrderBy() , FirstOrDefault() ve Where()özelliğini kod içerisinde DisplayList method içerisinde kullandım.
+
+[source, c++]
+----
+
+List<Student>
+
+/*List içeridinde FirstOrDefault() , Where() ve OrderBy fonk kullanımı*/
+
+public void CallByValue(List<Student> stList,string Id)
+{
+    var item = stList.Where(s => s.Id == Id)==null?new List<Student>(): stList.Where(s => s.Id == Id).OrderBy(a => a.Name).ToList();
+    Console.WriteLine("ID:" + item.FirstOrDefault().Id + "\n" + "Adı:"
+            + item.FirstOrDefault().Name + "\n" + item.FirstOrDefault().Age +
+            "\n" + "Notu: " + item.FirstOrDefault().Grade + "\n" + "NotHarf: " + item.FirstOrDefault().GradeLetter);
+}
+
+----
