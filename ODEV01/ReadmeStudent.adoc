@@ -22,13 +22,13 @@ image::images/1.png[]
 
 2.range-based for loop
 
-* Student sınıfı içerisinde tüm öğrencileri dönen metottur
+* Student sınıfı içerisinde 1 den 3 e kadar öğrencilere dönen method
 
 [source, c#]
 ----
-public void DisplayAllStudentList(List<Student> stList)
+public void DisplayAllStudentListRange(List<Student> stList)
 {
-    foreach (var item in stList)
+    foreach (var item in stList.GetRange(0, 2))
     {
         Console.WriteLine("ID:" + item.Id + "\n"+"Adı:" 
             + item.Name + "\n" + item.Age+
