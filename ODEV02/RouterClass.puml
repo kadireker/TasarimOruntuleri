@@ -1,0 +1,33 @@
+@startuml Router
+
+abstract class Client {
+#IpAddress: string
++ Connect()
+- GetRandomIpAddress()
+}
+
+class RequestClient {
++ Connect()
+}
+
+
+class RouterManagerPool {
+#_routemanager: RouterManagerPool
+#Size: int
+#TotalObject: int
+#defaultSize: int
+#_counter: int
+#_currentSize: int
+#_lockObject: object
+#ConcurrentBag<Client>: _bag
+- RouterManagerPool()
+- ReleaseIpAddress()
++ RequestObject()
++ ReleaseObject()
+}
+
+Client <|-- RequestClient
+Client <|-- RouterManagerPool
+RouterManagerPool <|-- RouterManagerPool
+
+@enduml
