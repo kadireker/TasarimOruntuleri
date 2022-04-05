@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\KEKER\\source\\repos\\SingletonThreadSafeProject\\SingletonThreadSafeProject\\SingletonThreadSafeProject.csproj": {}
+    "C:\\Users\\KEKER\\Source\\Repos\\kadireker\\TasarimOruntuleri\\ODEV02\\SingletonThreadSafeProject\\SingletonThreadSafeProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\KEKER\\source\\repos\\SingletonThreadSafeProject\\SingletonThreadSafeProject\\SingletonThreadSafeProject.csproj": {
+    "C:\\Users\\KEKER\\Source\\Repos\\kadireker\\TasarimOruntuleri\\ODEV02\\SingletonThreadSafeProject\\SingletonThreadSafeProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\KEKER\\source\\repos\\SingletonThreadSafeProject\\SingletonThreadSafeProject\\SingletonThreadSafeProject.csproj",
+        "projectUniqueName": "C:\\Users\\KEKER\\Source\\Repos\\kadireker\\TasarimOruntuleri\\ODEV02\\SingletonThreadSafeProject\\SingletonThreadSafeProject.csproj",
         "projectName": "SingletonThreadSafeProject",
-        "projectPath": "C:\\Users\\KEKER\\source\\repos\\SingletonThreadSafeProject\\SingletonThreadSafeProject\\SingletonThreadSafeProject.csproj",
+        "projectPath": "C:\\Users\\KEKER\\Source\\Repos\\kadireker\\TasarimOruntuleri\\ODEV02\\SingletonThreadSafeProject\\SingletonThreadSafeProject.csproj",
         "packagesPath": "C:\\Users\\KEKER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\KEKER\\source\\repos\\SingletonThreadSafeProject\\SingletonThreadSafeProject\\obj\\",
+        "outputPath": "C:\\Users\\KEKER\\Source\\Repos\\kadireker\\TasarimOruntuleri\\ODEV02\\SingletonThreadSafeProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
