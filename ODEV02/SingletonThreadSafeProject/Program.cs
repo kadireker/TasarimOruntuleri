@@ -27,7 +27,7 @@ namespace SingletonThreadSafeProject
             while (j < 20)
             {
                 i++;
-                Console.WriteLine("------------------------------------");
+                Console.WriteLine("-------------------------------------");
                 Console.WriteLine("State : " + i);
                 Client cc = RouterManagerPool.Instance.RequestObject();
                 if (cc != null)
@@ -67,7 +67,7 @@ namespace SingletonThreadSafeProject
             //});
 
             await Task.CompletedTask;
-            Console.WriteLine("------------------------------------");
+            Console.WriteLine("-------------------------------------");
             Console.WriteLine("Finish");
 
         }
