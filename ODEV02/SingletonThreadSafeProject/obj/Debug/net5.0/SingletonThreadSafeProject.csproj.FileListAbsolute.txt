@@ -1,0 +1,16 @@
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\bin\Debug\net5.0\SingletonThreadSafeProject.exe
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\bin\Debug\net5.0\SingletonThreadSafeProject.deps.json
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\bin\Debug\net5.0\SingletonThreadSafeProject.runtimeconfig.json
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\bin\Debug\net5.0\SingletonThreadSafeProject.runtimeconfig.dev.json
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\bin\Debug\net5.0\SingletonThreadSafeProject.dll
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\bin\Debug\net5.0\SingletonThreadSafeProject.pdb
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\obj\Debug\net5.0\SingletonThreadSafeProject.csproj.AssemblyReference.cache
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\obj\Debug\net5.0\SingletonThreadSafeProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\obj\Debug\net5.0\SingletonThreadSafeProject.AssemblyInfoInputs.cache
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\obj\Debug\net5.0\SingletonThreadSafeProject.AssemblyInfo.cs
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\obj\Debug\net5.0\SingletonThreadSafeProject.csproj.CoreCompileInputs.cache
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\obj\Debug\net5.0\SingletonThreadSafeProject.dll
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\obj\Debug\net5.0\refint\SingletonThreadSafeProject.dll
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\obj\Debug\net5.0\SingletonThreadSafeProject.pdb
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\obj\Debug\net5.0\SingletonThreadSafeProject.genruntimeconfig.cache
+C:\Users\KEKER\source\repos\SingletonThreadSafeProject\SingletonThreadSafeProject\obj\Debug\net5.0\ref\SingletonThreadSafeProject.dll
